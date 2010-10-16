@@ -1,0 +1,12 @@
+.rw_widget,
+.rw_widget * {
+	margin: 0;
+	padding: 0;
+}
+	.rw_widget li {
+		list-style: none;
+		border-bottom: 1px solid #999;
+	}
+	.rw_widget li a {
+		display: block;
+	}
