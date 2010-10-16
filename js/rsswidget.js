@@ -2,13 +2,17 @@
   $.fn.rssWidget = function(rw_settings) {
     var rw_settings = $.extend({
       feedUrl:          'http://feeds.feedburner.com/JulienDesrosiers',
+      feedURLLabel:     'Grab the feed',
       theme:            'default',
       maxItems:         10,
       dateFormat:       '%b %d, %Y', // Oct 16, 2010
       fullDateNames:    ['January','February','March','April','May','June','July','August','September','October','November','December'],
       abbrevDateNames:  ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
       linkTarget:       '_blank', // _blank, _self, _parent, _top
-      feedTitleMarkup:  '<p class="rw_title"><a href="{feedLink}" target="{linkTarget}">{feedTitle}</a></p>', 
+      feedTitleMarkup:  '<p class="rw_title"> \
+        <a href="{siteLink}" class="rw_feedTitle" target="{linkTarget}">{feedTitle}</a> \
+        <a href="{feedURL}" class="rw_feedURL" target="{linkTarget}" title="{feedURLLabel}">{feedURLLabel}</a> \
+        </p>', 
       feedItemMarkup:   '<li> \
           <span class="rw_pubDate">{pubDate}</span> \
           <a href="{link}" target="{linkTarget}">{title}</a> \
@@ -74,9 +78,12 @@
       
       $.get('rsswidget_proxy.php?rsswidget_url='+options.feedUrl, function(data){
         $this.append( options.feedTitleMarkup
-            .replace(/{feedTitle}/g, $(data).find('channel>title').text())
-            .replace(/{feedLink}/g, $(data).find('channel>link').text())
-            .replace(/{linkTarget}/g, options.linkTarget) );
+                        .replace(/{feedTitle}/g,    $(data).find('channel>title').text())
+                        .replace(/{siteLink}/g,     $(data).find('channel>link').text())
+                        .replace(/{linkTarget}/g,   options.linkTarget)
+                        .replace(/{feedURL}/g,      options.feedUrl)
+                        .replace(/{feedURLLabel}/g, options.feedURLLabel)
+            );
         $this.append('<ul class="rw_widget">'+getNodes(data)+'</ul>');
       });
       

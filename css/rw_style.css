@@ -5,7 +5,16 @@
 .rw_title {
 	font-size: 19px;
 }
-
+	.rw_feedTitle {}
+	.rw_feedURL {
+		
+	}
+ul.rw_widget {
+	
+}
+	.rw_widget li {
+		margin-bottom: 10px;
+	}
 /*
 	DON'T EDIT THE CODE BELOW 
 */
