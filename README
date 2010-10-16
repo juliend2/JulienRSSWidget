@@ -1,0 +1,18 @@
+Easy to Install
+===============
+In WordPress, with the plugin: It includes a WordPress plugin that You just need to activate. Then You will have the widget available for You to add on Your site.
+
+In plain HTML, with jQuery: Just add as many RSSWidgets as You want in your HTML, with $('#element').rssWidget({...});
+
+Highly Configurable
+===================
+You can modify: 
+-the format of the dates (including the name of the months)
+-the HTML structure of the feed items that are shown
+-the styles, via the (highly commented) CSS file
+-You can install as many RSSWidgets as You want into the same site
+
+Compatible
+==========
+Tested in Internet Explorer 6,7,8, Firefox 2,3 (Mac & PC), Safari, Chrome and Opera.
+
