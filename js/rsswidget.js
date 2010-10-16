@@ -1,6 +1,7 @@
 (function( $ ){
   $.fn.rssWidget = function(rw_settings) {
     var rw_settings = $.extend({
+      maxItems:         10,
       dateFormat:       '%b %d, %Y',
       fullDateNames:    ['January','February','March','April','May','June','July','August','September','October','November','December'],
       abbrevDateNames:  ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
@@ -39,8 +40,14 @@
       // takes an XML node set
       // returns a string of HTML nodes to append in the DOM
       var getNodes = function(xmlData) {
-        var htmlString = '';
+        
+        var htmlString = ''
+                     i = 0 ;
+                     
         $(xmlData).find('item').each(function(){
+          
+          if (i >= options.maxItems) return; // dont show more than the maximum number of items
+          
           var date = new Date($(this).find('pubDate').text());
           // add useful functions to this date object:
           date.getFullMonthName = getFullMonthName;
@@ -50,14 +57,15 @@
           for (var format in dates) {
             dateString = dateString.replace(new RegExp(format,'g'), date[dates[format]]());
           }
-
+          
           // add this element to the returned HTML string:
           htmlString += options.feedItemMarkup
             .replace(/{title}/g,$(this).find('title').text())
             .replace(/{link}/g,$(this).find('link').text())
             .replace(/{pubDate}/g, dateString)
             .replace(/{linkTarget}/g, options.linkTarget);
-            
+          
+          i ++;
         });
         return htmlString;
       };

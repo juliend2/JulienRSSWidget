@@ -11,6 +11,7 @@ You can modify:
 -the HTML structure of the feed items that are shown
 -the styles, via the (highly commented) CSS file
 -You can install as many RSSWidgets as You want into the same site
+-the maximum number of news items to show on each feed
 
 Compatible
 ==========
