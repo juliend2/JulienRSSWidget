@@ -1,15 +1,17 @@
 (function( $ ){
   $.fn.rssWidget = function(rw_settings) {
     var rw_settings = $.extend({
+      feedUrl:          'http://feeds.feedburner.com/JulienDesrosiers',
+      theme:            'default',
       maxItems:         10,
-      dateFormat:       '%b %d, %Y',
+      dateFormat:       '%b %d, %Y', // Oct 16, 2010
       fullDateNames:    ['January','February','March','April','May','June','July','August','September','October','November','December'],
       abbrevDateNames:  ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
-      feedUrl:          'http://feeds.feedburner.com/JulienDesrosiers',
-      linkTarget:       '_blank',
+      linkTarget:       '_blank', // _blank, _self, _parent, _top
+      feedTitleMarkup:  '<p class="rw_title"><a href="{feedLink}" target="{linkTarget}">{feedTitle}</a></p>', 
       feedItemMarkup:   '<li> \
-          <a href="{link}" target="{linkTarget}">{title}</a> \
           <span class="rw_pubDate">{pubDate}</span> \
+          <a href="{link}" target="{linkTarget}">{title}</a> \
         </li>'
     }, rw_settings);
     
@@ -71,6 +73,10 @@
       };
       
       $.get('rsswidget_proxy.php?rsswidget_url='+options.feedUrl, function(data){
+        $this.append( options.feedTitleMarkup
+            .replace(/{feedTitle}/g, $(data).find('channel>title').text())
+            .replace(/{feedLink}/g, $(data).find('channel>link').text())
+            .replace(/{linkTarget}/g, options.linkTarget) );
         $this.append('<ul class="rw_widget">'+getNodes(data)+'</ul>');
       });
       
