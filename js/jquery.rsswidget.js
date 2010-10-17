@@ -45,6 +45,7 @@
       
       // takes an XML node set
       // returns a string of HTML nodes to append in the DOM
+       
       var getNodes = function(xmlData) {
         
         var htmlString = ''
@@ -71,7 +72,7 @@
             .replace(/{pubDate}/g, dateString)
             .replace(/{linkTarget}/g, options.linkTarget);
           
-          i ++;
+          i += 1;
         });
         return htmlString;
       };
