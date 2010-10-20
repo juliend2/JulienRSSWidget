@@ -17,8 +17,7 @@
         </p>', 
       feedTitleOverride:'',
       feedItemMarkup:   '<li> \
-          <span class="rw_pubDate">{pubDate}</span> \
-          <a href="{link}" target="{linkTarget}">{title}</a> \
+          <a href="{link}" title="{pubDate}" target="{linkTarget}">{title}</a> \
         </li>'
     }, rw_settings);
     
