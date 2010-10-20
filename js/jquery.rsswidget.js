@@ -10,10 +10,11 @@
       fullDateNames:    ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       abbrevDateNames:  ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
       linkTarget:       '_blank', // _blank, _self, _parent, _top
-      feedTitleMarkup:  '<p class="rw_title clearfix"> \
+      feedHeadMarkup:  '<p class="rw_title clearfix"> \
         <a href="{siteLink}" class="rw_feedTitle" target="{linkTarget}">{feedTitle}</a> \
         <a href="{feedURL}" class="rw_feedURL" target="{linkTarget}" title="{feedURLLabel}">{feedURLLabel}</a> \
         </p>', 
+      feedTitleOverride:'',
       feedItemMarkup:   '<li> \
           <span class="rw_pubDate">{pubDate}</span> \
           <a href="{link}" target="{linkTarget}">{title}</a> \
@@ -83,8 +84,8 @@
 
       $.get('rsswidget_proxy.php?rsswidget_url='+options.feedUrl, function(data){
           $this.find('.rw_container')
-            .append( options.feedTitleMarkup
-                        .replace(/{feedTitle}/g,    $(data).find('channel>title').text())
+            .append( options.feedHeadMarkup
+                        .replace(/{feedTitle}/g,    options.feedTitleOverride!=''?options.feedTitleOverride:$(data).find('channel>title').text())
                         .replace(/{siteLink}/g,     $(data).find('channel>link').text())
                         .replace(/{linkTarget}/g,   options.linkTarget)
                         .replace(/{feedURL}/g,      options.feedUrl)

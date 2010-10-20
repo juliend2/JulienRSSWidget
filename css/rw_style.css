@@ -1,6 +1,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	default THEME
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
 .default {
 	background-color: #FCFCFC;
 	font: normal 13px/19px Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -10,15 +11,25 @@
 	background: #fcfcfc url('../images/rsswidget_loading.gif') no-repeat center center;
 	height: 90px;
 }
+.default a:link, 
+.default a:visited {
+	color: #004762;
+	text-decoration: none;
+}
+.default a:hover,
+.default a:active {
+	text-decoration: underline;
+}
 .default .rw_title {
 	font-size: 19px;
 	margin-top: 0;
+	padding: 10px 10px 0 10px;
 }
-	.default .rw_feedTitle {
+	.default a.rw_feedTitle {
 		float: left;
 		margin-top: 2px;
 	}
-	.default .rw_feedURL {
+	.default a.rw_feedURL {
 		background: url('../images/rss_icon.gif') no-repeat right top;
 		width: 19px;
 		height: 19px;
@@ -26,28 +37,31 @@
 		text-indent: -9999px;
 		float: right;
 	}
-.default ul.rw_widget {
-	
-}
+.default ul.rw_widget {}
 	.default .rw_widget li {
-		margin-bottom: 10px;
+		margin-bottom: 5px;
 		line-height: 12px;
 	}
 		.default .rw_widget li .rw_pubDate {
-			font-size: 12px;
+			font-size: 11px;
 			color: #999;
+			padding: 0 10px;
 		}
 		.default .rw_widget li a {
 			display: block;
 			line-height: 19px;
+			padding: 0 10px;
+			font-size: 13px;
 		}
 		.default .rw_widget li a:hover {
 			background: #F4F4F4;
 		}
-		
+
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	DON'T EDIT THE CODE BELOW 
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
 .rw_widget,
 .rw_widget * {
 	margin: 0;
@@ -56,6 +70,7 @@
 	.rw_widget li {
 		list-style: none;
 	}
+
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	MISCELLANEOUS
