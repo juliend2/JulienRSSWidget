@@ -36,11 +36,15 @@
 		display: block;
 		text-indent: -9999px;
 		float: right;
+		outline: none;
 	}
 .default ul.rw_widget {}
 	.default .rw_widget li {
 		margin-bottom: 5px;
 		line-height: 12px;
+		height: auto !important;
+		height: 1px; /* for IE 6 */
+		
 	}
 		.default .rw_widget li .rw_pubDate {
 			font-size: 11px;
