@@ -2,8 +2,9 @@
   $.fn.rssWidget = function(rw_settings) {
     
     var rw_settings = $.extend({
-      feedUrl:          'http://feeds.feedburner.com/JulienDesrosiers',
+      feedURL:          'http://feeds.feedburner.com/JulienDesrosiers',
       feedURLLabel:     'Grab the feed',
+      proxyURL:         'rsswidget_proxy.php',
       theme:            'default',
       maxItems:         10,
       dateFormat:       '%b %d, %Y', // Oct 16, 2010
@@ -82,13 +83,13 @@
       
       $this.append($container);
 
-      $.get('rsswidget_proxy.php?rsswidget_url='+options.feedUrl, function(data){
+      $.get(options.proxyURL+'?rsswidget_url='+options.feedURL, function(data){
           $this.find('.rw_container')
             .append( options.feedHeadMarkup
                         .replace(/{feedTitle}/g,    options.feedTitleOverride!=''?options.feedTitleOverride:$(data).find('channel>title').text())
                         .replace(/{siteLink}/g,     $(data).find('channel>link').text())
                         .replace(/{linkTarget}/g,   options.linkTarget)
-                        .replace(/{feedURL}/g,      options.feedUrl)
+                        .replace(/{feedURL}/g,      options.feedURL)
                         .replace(/{feedURLLabel}/g, options.feedURLLabel)
             )
             .append('<ul class="rw_widget">'+getNodes(data)+'</ul>')
