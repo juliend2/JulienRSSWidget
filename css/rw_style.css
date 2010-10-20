@@ -1,23 +1,53 @@
-/*
-	Your Theme
-*/
-
-.rw_title {
-	font-size: 19px;
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	default THEME
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.default {
+	background-color: #FCFCFC;
+	font: normal 13px/19px Arial, "Helvetica Neue", Helvetica, sans-serif;
+	height: auto;
 }
-	.rw_feedTitle {}
-	.rw_feedURL {
-		
+.default.rw_loading {
+	background: #fcfcfc url('../images/rsswidget_loading.gif') no-repeat center center;
+	height: 90px;
+}
+.default .rw_title {
+	font-size: 19px;
+	margin-top: 0;
+}
+	.default .rw_feedTitle {
+		float: left;
+		margin-top: 2px;
 	}
-ul.rw_widget {
+	.default .rw_feedURL {
+		background: url('../images/rss_icon.gif') no-repeat right top;
+		width: 19px;
+		height: 19px;
+		display: block;
+		text-indent: -9999px;
+		float: right;
+	}
+.default ul.rw_widget {
 	
 }
-	.rw_widget li {
+	.default .rw_widget li {
 		margin-bottom: 10px;
+		line-height: 12px;
 	}
-/*
+		.default .rw_widget li .rw_pubDate {
+			font-size: 12px;
+			color: #999;
+		}
+		.default .rw_widget li a {
+			display: block;
+			line-height: 19px;
+		}
+		.default .rw_widget li a:hover {
+			background: #F4F4F4;
+		}
+		
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	DON'T EDIT THE CODE BELOW 
-*/
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 .rw_widget,
 .rw_widget * {
 	margin: 0;
@@ -26,6 +56,22 @@ ul.rw_widget {
 	.rw_widget li {
 		list-style: none;
 	}
-	.rw_widget li a {
-		display: block;
-	}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	MISCELLANEOUS
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.clearfix {display: inline-block;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */

@@ -4,24 +4,37 @@
 	<title></title>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 	<style type="text/css">
-		#box1 {
+		.box {
 			width: 300px;
 			float: left;
 			border: 1px solid #999;
+			padding: 10px;
+			margin-right: 10px;
 		}
 	</style>
 	<link rel="stylesheet" href="css/rw_style.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
 	<script src="js/jquery-1.4.3.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/rsswidget.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.rsswidget.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
 		$(function(){
 			$('#box1').rssWidget({
-				feedUrl: 'http://feeds2.feedburner.com/MontrealHackers'
+				feedUrl: 'http://feeds2.feedburner.com/MontrealHackers',
+				maxItems: 20
+			});
+			$('#box2').rssWidget({
+				feedUrl: 'http://feeds.feedburner.com/JulienDesrosiers'
+			});
+			$('#box3').rssWidget({
+				feedUrl: 'http://feeds.feedburner.com/readwriteweb'
 			});
 		});
 	</script>
 </head>
 <body>
-	<div id="box1"><!-- rw_widget container --></div>
+	<!-- rw_widget containers -->
+	<div class="box" id="box1"></div>
+	<div class="box" id="box2"></div>
+	<div class="box" id="box3"></div>
+	
 </body>
 </html>

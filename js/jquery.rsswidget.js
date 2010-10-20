@@ -1,15 +1,16 @@
 (function( $ ){
   $.fn.rssWidget = function(rw_settings) {
+    
     var rw_settings = $.extend({
       feedUrl:          'http://feeds.feedburner.com/JulienDesrosiers',
       feedURLLabel:     'Grab the feed',
       theme:            'default',
       maxItems:         10,
       dateFormat:       '%b %d, %Y', // Oct 16, 2010
-      fullDateNames:    ['January','February','March','April','May','June','July','August','September','October','November','December'],
+      fullDateNames:    ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       abbrevDateNames:  ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
       linkTarget:       '_blank', // _blank, _self, _parent, _top
-      feedTitleMarkup:  '<p class="rw_title"> \
+      feedTitleMarkup:  '<p class="rw_title clearfix"> \
         <a href="{siteLink}" class="rw_feedTitle" target="{linkTarget}">{feedTitle}</a> \
         <a href="{feedURL}" class="rw_feedURL" target="{linkTarget}" title="{feedURLLabel}">{feedURLLabel}</a> \
         </p>', 
@@ -40,8 +41,9 @@
     
     return this.each(function(){
       
-      var $this   = $(this),
-          options = rw_settings;
+      var $this       = $(this),
+          options     = rw_settings
+          $container  = $('<div class="rw_container rw_loading '+options.theme+'"></div>');
       
       // takes an XML node set
       // returns a string of HTML nodes to append in the DOM
@@ -77,15 +79,19 @@
         return htmlString;
       };
       
+      $this.append($container);
+
       $.get('rsswidget_proxy.php?rsswidget_url='+options.feedUrl, function(data){
-        $this.append( options.feedTitleMarkup
+          $this.find('.rw_container')
+            .append( options.feedTitleMarkup
                         .replace(/{feedTitle}/g,    $(data).find('channel>title').text())
                         .replace(/{siteLink}/g,     $(data).find('channel>link').text())
                         .replace(/{linkTarget}/g,   options.linkTarget)
                         .replace(/{feedURL}/g,      options.feedUrl)
                         .replace(/{feedURLLabel}/g, options.feedURLLabel)
-            );
-        $this.append('<ul class="rw_widget">'+getNodes(data)+'</ul>');
+            )
+            .append('<ul class="rw_widget">'+getNodes(data)+'</ul>')
+            .removeClass('rw_loading');
       });
       
     });
