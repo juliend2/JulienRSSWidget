@@ -50,7 +50,7 @@
 		.default .rw_widget li a {
 			display: block;
 			line-height: 19px;
-			padding: 0 10px;
+			padding: 1px 10px;
 			font-size: 13px;
 		}
 		.default .rw_widget li a:hover {
