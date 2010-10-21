@@ -1,10 +1,18 @@
 (function( $ ){
-  $.fn.rssWidget = function(rw_settings) {
+  
+  $.julienRSSWidget = {
+    version: '0.1',
+    globalSettings: {
+      proxyURL: 'http://localhost/'
+    }
+  };
+  
+  $.fn.julienRSSWidget = function(rw_settings) {
     
     var rw_settings = $.extend({
       feedURL:          'http://feeds.feedburner.com/JulienDesrosiers',
       feedURLLabel:     'Grab the feed',
-      proxyURL:         'rsswidget_proxy.php',
+      proxyFileName:         'jrw_proxy.php',
       theme:            'default',
       maxItems:         10,
       dateFormat:       '%b %d, %Y', // Oct 16, 2010
@@ -17,6 +25,7 @@
         </p>', 
       feedTitleOverride:'',
       feedItemMarkup:   '<li> \
+          <span class="rw_pubDate">{pubDate}</span> \
           <a href="{link}" title="{pubDate}" target="{linkTarget}">{title}</a> \
         </li>'
     }, rw_settings);
@@ -82,7 +91,7 @@
       
       $this.append($container);
 
-      $.get(options.proxyURL+'?rsswidget_url='+options.feedURL, function(data){
+      $.get($.julienRSSWidget.globalSettings.proxyURL + options.proxyFileName + '?rsswidget_url='+options.feedURL, function(data){
           $this.find('.rw_container')
             .append( options.feedHeadMarkup
                         .replace(/{feedTitle}/g,    options.feedTitleOverride!=''?options.feedTitleOverride:$(data).find('channel>title').text())

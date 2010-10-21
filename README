@@ -1,17 +1,23 @@
 Easy to Install
 ===============
-In WordPress, with the plugin: It includes a WordPress plugin that You just need to activate. Then You will have the widget available for You to add on Your site.
+In your HTML, create an empty div like this:
+<div id="feed1"></div>
 
-In plain HTML, with jQuery: Just add as many RSSWidgets as You want in your HTML, with $('#element').rssWidget({...});
+And in you javascript, add this code:
+$(document).ready(function(){
+	$('#feed1').rssWidget({
+		feedURL: 'http://feeds.feedburner.com/readwriteweb'
+	});
+});
 
 Highly Configurable
 ===================
 You can modify: 
 -the format of the dates (including the name of the months)
--the HTML structure of the feed items that are shown
+-the HTML structure of the feed items that are shown, via the feedItemMarkup option
 -the styles, via the (highly commented) CSS file
--You can install as many RSSWidgets as You want into the same site
--the maximum number of news items to show on each feed
+-You can install as many RSSWidgets as You want into the same site, at least have a different feedURL option for each one of them
+-the maximum number of news items to show on each feed, via the maxItems option
 
 Compatible
 ==========

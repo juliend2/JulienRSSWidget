@@ -17,16 +17,17 @@
 	<script src="js/jquery.julienrsswidget.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
 		$(function(){
-			$('#box1').rssWidget({
+			
+			$.julienRSSWidget.globalSettings.proxyURL = 'http://localhost/codecanyon/rsswidget/';
+			
+			$('#box1').julienRSSWidget({
 				feedURL: 'http://feeds2.feedburner.com/MontrealHackers',
 				maxItems: 20
 			});
-			$('#box2').rssWidget({
-				feedURL: 'http://feeds.feedburner.com/JulienDesrosiers',
-				feedTitleOverride: 'Julien.is_a POULET'
-			});
-			$('#box3').rssWidget({
-				feedURL: 'http://feeds.feedburner.com/readwriteweb'
+			$('#box2').julienRSSWidget();
+			$('#box3').julienRSSWidget({
+				feedURL: 'http://feeds.feedburner.com/readwriteweb',
+				feedTitleOverride: 'RRW'
 			});
 		});
 	</script>
