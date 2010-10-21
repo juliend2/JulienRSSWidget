@@ -8,7 +8,7 @@
 	height: auto;
 }
 .default.rw_loading {
-	background: #fcfcfc url('../images/rsswidget_loading.gif') no-repeat center center;
+	background: #fcfcfc url('../images/julienRSSWidget/default/rsswidget_loading.gif') no-repeat center center;
 	height: 90px;
 }
 .default a:link, 
@@ -30,7 +30,7 @@
 		margin-top: 2px;
 	}
 	.default a.rw_feedURL {
-		background: url('../images/rss_icon.gif') no-repeat right top;
+		background: url('../images/julienRSSWidget/default/rss_icon.gif') no-repeat right top;
 		width: 19px;
 		height: 19px;
 		display: block;
