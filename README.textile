@@ -3,9 +3,7 @@ h1. Julien RSS Widget
 h2. Easy to Install
 
 1. In your HTML, create an empty div like this:
-<pre>
-<div id="feed1"></div>
-</pre>
+<pre><div id="feed1"></div></pre>
 
 2. Upload the jrw_proxy.php file somewhere that is accessible in the same domain.
 
