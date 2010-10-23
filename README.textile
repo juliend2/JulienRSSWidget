@@ -5,16 +5,16 @@ h2. Easy to Install
 1. In your HTML, create an empty div like this:
 @<div id="feed1"></div>@
 
-2. Upload the jrw_proxy.php file somewhere that is accessible in the same domain.
+2. Upload the jrw_proxy.php file somewhere within the same domain.
 
 3. And in you javascript, add this code:
 <pre>
-	$.julienRSSWidget.globalSettings.proxyURL = 'http://yoursite.com/path/to/jrw_proxy.php';
-	$(document).ready(function(){		
-		$('#feed1').julienRSSWidget({
-			feedURL: 'http://feeds.feedburner.com/readwriteweb'
-		});
+$.julienRSSWidget.globalSettings.proxyURL = 'http://yoursite.com/path/to/jrw_proxy.php';
+$(document).ready(function(){		
+	$('#feed1').julienRSSWidget({
+		feedURL: 'http://feeds.feedburner.com/readwriteweb'
 	});
+});
 </pre>
 
 
