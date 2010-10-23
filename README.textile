@@ -1,0 +1,59 @@
+h1. Julien RSS Widget
+
+h2. Easy to Install
+
+1. In your HTML, create an empty div like this:
+<pre>
+	<div id="feed1"></div>
+</pre>
+
+2. Upload the jrw_proxy.php file somewhere that is accessible in the same domain.
+
+3. And in you javascript, add this code:
+<pre>
+	$.julienRSSWidget.globalSettings.proxyURL = 'http://yoursite.com/path/to/jrw_proxy.php';
+	$(document).ready(function(){		
+		$('#feed1').julienRSSWidget({
+			feedURL: 'http://feeds.feedburner.com/readwriteweb'
+		});
+	});
+</pre>
+
+
+h2. Highly Configurable
+
+h3. You can modify: 
+
+* the format of the dates (including the name of the months)
+* the HTML structure of the feed items that are shown, via the feedItemMarkup option
+* the styles, via the theme in the CSS file
+* You can install as many RSSWidgets as You want into the same site, at least have a different feedURL option for each one of them (feedURL option)
+* the maximum number of news items to show on each feed, via the maxItems option
+* and more...
+
+<pre>
+$('#yourdiv').julienRSSWidget({
+	feedURL:          'http://feeds.feedburner.com/JulienDesrosiers',
+	feedURLLabel:     'Grab the feed',
+	theme:            'default',
+	maxItems:         10,
+	dateFormat:       '%b %d, %Y', // Oct 16, 2010
+	fullDateNames:    ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+	abbrevDateNames:  ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
+	linkTarget:       '_blank', // _blank, _self, _parent, _top
+	feedHeadMarkup:  '<p class="rw_title clearfix"> \
+	  <a href="{siteLink}" class="rw_feedTitle" target="{linkTarget}">{feedTitle}</a> \
+	  <a href="{feedURL}" class="rw_feedURL" target="{linkTarget}" title="{feedURLLabel}">{feedURLLabel}</a> \
+	  </p>', 
+	feedTitleOverride:'',
+	feedItemMarkup:   '<li> \
+	    <span class="rw_pubDate">{pubDate}</span> \
+	    <a href="{link}" title="{pubDate}" target="{linkTarget}">{title}</a> \
+	  </li>'
+});
+</pre>
+
+h2. Compatible
+
+Tested in Internet Explorer 6-7, Firefox, Safari
+
