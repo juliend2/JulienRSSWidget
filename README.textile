@@ -16,6 +16,24 @@ $(document).ready(function(){
 });
 </pre>
 
+h3. About the Proxy (proxyURL setting)
+
+Due to the fact that this plugin is in JavaScript and that there is this thing called "Same Origin Policy":http://en.wikipedia.org/wiki/Same_origin_policy, you have no choice but to configure (see above) julienRSSWidget to use a proxy. The proxy is just a simple server side script that grabs the content of the feed you're trying to access and make it accessible in the scope of your own domain. This plugin includes the PHP version of this script. For the rubyists though, here is what you would do (in Sinatra. You would also need to @sudo gem install curb-fu@ ):
+
+<pre>
+require 'curb-fu'
+require 'sinatra'
+get '/jrw_proxy' do
+  response = CurbFu.get(params[:rsswidget_url])
+  response.body
+end
+</pre>
+
+and in your javascript, it would look like this:
+
+<pre>
+$.julienRSSWidget.globalSettings.proxyURL = 'http://yoursite.com/jrw_proxy';
+</pre>
 
 h2. Highly Configurable
 
