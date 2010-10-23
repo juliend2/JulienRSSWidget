@@ -68,7 +68,10 @@ $('#yourdiv').julienRSSWidget({
 });
 </pre>
 
-h2. Compatible
+h2. Cross-browser
 
 Tested in Internet Explorer 6-7, Firefox, Safari
 
+h2. Atom
+
+The Atom format is not currently supported.
